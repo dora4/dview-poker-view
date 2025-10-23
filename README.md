@@ -16,7 +16,3 @@ dependencies {
     implementation 'com.github.dora4:dview-poker-view:1.0'
 }
 ```
-
-1.修改settings.gradle的rootProject.name
-2.修改lib模块的build.gradle的namespace
-3.修改README.md文件的库名，并删除此步骤提示
