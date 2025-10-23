@@ -91,6 +91,18 @@ class DoraPokerView @JvmOverloads constructor(
         animOut.start()
     }
 
+    /** 点击翻牌：如果正面已显示，先翻回再翻出正面 */
+    fun flipCardWithReset() {
+        if (isFrontShowing()) {
+            flipCard()
+            postDelayed({
+                flipCard()
+            }, 250)
+        } else {
+            flipCard()
+        }
+    }
+
     /** 设置正面图片 */
     fun setFrontImage(resId: Int) {
         frontView.setImageResource(resId)
@@ -99,6 +111,26 @@ class DoraPokerView @JvmOverloads constructor(
     /** 设置背面图片 */
     fun setBackImage(resId: Int) {
         backView.setImageResource(resId)
+    }
+
+    /** 当前是否正面显示 */
+    fun isFrontShowing(): Boolean = isFront
+
+    /**
+     * 重置到背面
+     * @param animate 是否播放翻转动画，默认 false
+     */
+    fun reset(animate: Boolean = false) {
+        if (!isFront) return  // 已经是背面
+        if (animate) {
+            flipCard()
+        } else {
+            frontView.visibility = View.GONE
+            backView.visibility = View.VISIBLE
+            frontView.rotationY = 0f
+            backView.rotationY = 0f
+            isFront = false
+        }
     }
 
     private fun playFlipSound() {
