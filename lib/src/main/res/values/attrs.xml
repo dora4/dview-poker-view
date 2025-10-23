@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="DoraPokerView">
+        <attr name="dview_pv_frontSrc" format="reference" />
+        <attr name="dview_pv_backSrc" format="reference" />
+    </declare-styleable>
+</resources>
